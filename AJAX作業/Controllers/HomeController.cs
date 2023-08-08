@@ -21,6 +21,14 @@ namespace AJAX作業.Controllers
         {
             return View();
         }
+        public IActionResult Homework3()
+        {
+            return View();
+        }
+        public IActionResult Homework4()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
