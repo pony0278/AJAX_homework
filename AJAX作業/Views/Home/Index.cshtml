@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<table id="empTable" class="table table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>姓名</th>
+            <th>年資</th>
+            <th>薪水</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section Scripts{    
+    <script>
+
+$(document).ready(function() {
+    const emp = {
+        "employees": [
+            { "name": "Tom", "workYears": 3, "salary": 35000 },
+            { "name": "Jack", "workYears": 5, "salary": 40000 },
+            { "name": "Mary", "workYears": 7, "salary": 45000 }
+        ]
+    };
+    
+    const tbody = $('#empTable tbody'); // 表格的tbody區域
+    
+    emp.employees.forEach(employee => {
+        // 新的<tr>元素
+        const row = $('<tr>');
+        
+        // 創建<td>元素並將資料插入
+        const nameCell = $('<td>').text(employee.name);
+        const yearsCell = $('<td>').text(employee.workYears);
+        const salaryCell = $('<td>').text(employee.salary);
+        
+        // 將<td>元素插入<tr>元素
+        row.append(nameCell, yearsCell, salaryCell);
+        
+        // 將<tr>元素插入表格的tbody區域
+        tbody.append(row);
+    });
+});
+
+
+
+
+    </script>
+}
