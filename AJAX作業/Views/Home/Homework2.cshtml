@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Homework2";
+}
+
+<h1>Homework2</h1>
+<div class="container">
+    <div class="row ">
+    </div>
+</div>
+
+
+@section Scripts{
+    <script src="~/datas/travel.js"></script>
+    <script>
+$(document).ready(function() {
+    const cardContainer = $('.row'); 
+    spots.CommonFormat.Section.forEach(item => {
+        const card = `
+            <div class="card" style="width: 18rem;">
+                <img src="${item.file.img[0].text}" class="card-img-top" alt="${item.stitle}">
+                <div class="card-body">
+                    <h5 class="card-title">${item.stitle}</h5>
+                    <p class="card-text">${item.xbody}</p>
+                    <a href="${item.xurl}" class="btn btn-primary">詳細資訊</a>
+                </div>
+            </div>
+        `;
+        cardContainer.append(card);
+    });
+});
+    </script>
+}
