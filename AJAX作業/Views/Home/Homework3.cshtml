@@ -4,3 +4,31 @@
 }
 
 <h1>Homework3</h1>
+
+<input type="number" id="numberInput" />
+<button id="checkButton">Check number</button>
+<div id="result"></div>
+
+@section Scripts{
+    <script>
+document.getElementById("checkButton").addEventListener("click", function() {
+    var number = document.getElementById("numberInput").value;
+
+    fetch(`/api/ChecknumberAvailability?Num=${number}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ number: number})
+    })
+    .then(response => response.text())
+    .then(result => {
+        var resultDiv = document.getElementById("result");
+        resultDiv.innerHTML = result;
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+});
+    </script>
+}
