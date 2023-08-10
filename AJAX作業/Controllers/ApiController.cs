@@ -15,7 +15,7 @@ namespace AJAX作業.Controllers
             _host = host;
         }
 
-            [HttpPost]
+
             public IActionResult ChecknumberAvailability([FromBody] CheckNumberModel model)
             {
                 bool isNumberFive = model.Number == 5;
