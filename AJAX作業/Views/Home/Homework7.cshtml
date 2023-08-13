@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Homework7";
+}
+@section Styles{
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+}
+
+
+<h1>Homework7</h1>
+
+<div class="ui-widget">
+    <label for="tags">輸入城市名</label>
+    <input id="tags">
+</div>
+
+@section Scripts{
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            async function loadCity() {
+                try {
+                    const response = await fetch('@Url.Content("~/api/cities")');
+                    const datas = await response.json();
+
+                    const cities = datas.map(city => city);
+                    $("#tags").autocomplete({
+                        source: cities
+                    });
+                } catch (error) {
+                    console.error("錯誤:", error);
+                }
+            }
+
+            loadCity();
+        });
+
+    </script>
+}
